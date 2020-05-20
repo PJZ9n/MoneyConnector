@@ -34,6 +34,9 @@ use pocketmine\Player;
 interface MoneyConnector
 {
     /** @var int */
+    public const RETURN_FAILED = -4;
+    
+    /** @var int */
     public const RETURN_NO_ACCOUNT = -3;
     
     /** @var int */
