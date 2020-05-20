@@ -1,7 +1,7 @@
 --- # Poggit-CI Manifest. Open the CI at https://poggit.pmmp.io/ci/PJZ9n/MoneyConnector
 build-by-default: true
 branches:
-- master
+  - master
 projects:
   MoneyConnector:
     type: library
