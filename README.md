@@ -16,7 +16,7 @@
  * @version 1.0.0
  * @main Example\Example\Main
  * @api 3.0.0
- * @description Every time you login to the server, player will be granted 100 money.
+ * @description Every time you login to the server, player will be granted 1000 money.
  */
 
 declare(strict_types=1);
