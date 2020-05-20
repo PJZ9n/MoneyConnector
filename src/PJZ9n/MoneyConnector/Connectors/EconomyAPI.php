@@ -35,6 +35,23 @@ use onebone\economyapi\EconomyAPI as PEconomyAPI;
  */
 class EconomyAPI implements MoneyConnector
 {
+    private static function convertResult(int $return): int
+    {
+        switch ($return) {
+            case PEconomyAPI::RET_NO_ACCOUNT:
+                return MoneyConnector::RETURN_NO_ACCOUNT;
+            case PEconomyAPI::RET_CANCELLED:
+                return MoneyConnector::RETURN_CANCELLED;
+            case PEconomyAPI::RET_NOT_FOUND:
+                return MoneyConnector::RETURN_NOT_FOUND;
+            case PEconomyAPI::RET_INVALID:
+                return MoneyConnector::RETURN_INVALID;
+            case PEconomyAPI::RET_SUCCESS:
+                return MoneyConnector::RETURN_SUCCESS;
+        }
+        return MoneyConnector::RETURN_FAILED;
+    }
+    
     /** @var PEconomyAPI */
     private $parentAPI;
     
@@ -72,7 +89,7 @@ class EconomyAPI implements MoneyConnector
      */
     public function setMoney(Player $player, float $amount): int
     {
-        return $this->parentAPI->setMoney($player, $amount);
+        return self::convertResult($this->parentAPI->setMoney($player, $amount));
     }
     
     /**
@@ -80,7 +97,7 @@ class EconomyAPI implements MoneyConnector
      */
     public function addMoney(Player $player, float $amount): int
     {
-        return $this->parentAPI->addMoney($player, $amount);
+        return self::convertResult($this->parentAPI->addMoney($player, $amount));
     }
     
     /**
@@ -88,7 +105,7 @@ class EconomyAPI implements MoneyConnector
      */
     public function reduceMoney(Player $player, float $amount): int
     {
-        return $this->parentAPI->reduceMoney($player, $amount);
+        return self::convertResult($this->parentAPI->reduceMoney($player, $amount));
     }
     
     /**
