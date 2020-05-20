@@ -93,6 +93,8 @@ class EconomyAPI implements MoneyConnector
     
     /**
      * @inheritDoc
+     *
+     * @return PEconomyAPI
      */
     public function getParentAPIInstance(): Object
     {
