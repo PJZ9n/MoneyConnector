@@ -27,6 +27,12 @@ use PJZ9n\MoneyConnector\MoneyConnector;
 use pocketmine\Player;
 use onebone\economyapi\EconomyAPI as PEconomyAPI;
 
+/**
+ * Class EconomyAPI
+ * Connector for onebone/EconomyAPI
+ *
+ * @package PJZ9n\MoneyConnector\Connectors
+ */
 class EconomyAPI implements MoneyConnector
 {
     /** @var PEconomyAPI */
