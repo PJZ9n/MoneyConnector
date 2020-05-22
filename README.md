@@ -6,6 +6,9 @@
 - [x] mixpowder/MixCoinSystem
 - [x] metowa1227/MoneySystem
 
+## Using Plugin
+- [PJZ9n/GiveMoney](https://github.com/PJZ9n/GiveMoney)
+
 ## How to use
 ### Example
 ```php
