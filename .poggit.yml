@@ -6,4 +6,5 @@ projects:
   MoneyConnector:
     type: library
     model: virion
+  MoneyConnectorPlugin: []
 ...
