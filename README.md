@@ -10,6 +10,17 @@
 - [PJZ9n/GiveMoney](https://github.com/PJZ9n/GiveMoney)
 
 ## How to use
+### Preparing to use this library
+- Load the
+[MoneyConnecterPlugin](https://poggit.pmmp.io/ci/PJZ9n/MoneyConnector/MoneyConnectorPlugin)
+plugin on your server.
+- Inject
+[MoneyConnecter](https://poggit.pmmp.io/ci/PJZ9n/MoneyConnector/MoneyConnector)
+Virion into your plugin.
+Please refer to
+[official documentation](https://github.com/poggit/support/blob/master/virion.md)
+for basic usage of Virion.
+
 ### Example
 ```php
 <?php
