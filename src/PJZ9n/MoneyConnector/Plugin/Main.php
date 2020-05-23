@@ -21,7 +21,7 @@
 
 declare(strict_types=1);
 
-namespace PJZ9n\MoneyConnectorPlugin;
+namespace PJZ9n\MoneyConnector\Plugin;
 
 use pocketmine\plugin\PluginBase;
 
