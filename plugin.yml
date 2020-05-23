@@ -1,4 +1,4 @@
 name: MoneyConnectorPlugin
 version: 1.0.0
-main: PJZ9n\MoneyConnectorPlugin\Main
+main: PJZ9n\MoneyConnector\Plugin\Main
 api: 3.0.0
