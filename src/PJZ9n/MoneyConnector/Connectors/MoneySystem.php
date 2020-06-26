@@ -73,8 +73,6 @@ class MoneySystem implements MoneyConnector
     
     /**
      * @inheritDoc
-     *
-     * @param int $amount
      */
     public function setMoney(Player $player, float $amount): int
     {
@@ -87,8 +85,6 @@ class MoneySystem implements MoneyConnector
     
     /**
      * @inheritDoc
-     *
-     * @param int $amount
      */
     public function addMoney(Player $player, float $amount): int
     {
@@ -101,8 +97,6 @@ class MoneySystem implements MoneyConnector
     
     /**
      * @inheritDoc
-     *
-     * @param int $amount
      */
     public function reduceMoney(Player $player, float $amount): int
     {
