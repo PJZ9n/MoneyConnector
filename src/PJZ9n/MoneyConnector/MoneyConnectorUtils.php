@@ -40,13 +40,13 @@ abstract class MoneyConnectorUtils
     {
         $name = strtolower($name);
         switch ($name) {
-            case "EconomyAPI":
+            case "economyapi":
                 return new EconomyAPI();
                 break;
-            case "MixCoinSystem":
+            case "mixcoinsystem":
                 return new MixCoinSystem();
                 break;
-            case "MoneySystem":
+            case "moneysystem":
                 return new MoneySystem();
                 break;
         }
