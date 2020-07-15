@@ -62,21 +62,21 @@ class MoneySystem implements MoneyConnector
     /**
      * @inheritDoc
      */
-    public function myMoney(Player $player): ?float
+    public function myMoney(Player $player): ?int
     {
         $get = $this->parentAPI->get($player);
         if ($get === null) {
             return null;
         }
-        return (float)$get;
+        return (int)$get;
     }
     
     /**
      * @inheritDoc
      */
-    public function setMoney(Player $player, float $amount): int
+    public function setMoney(Player $player, int $amount): int
     {
-        if ($this->parentAPI->set($player, (int)$amount)) {
+        if ($this->parentAPI->set($player, $amount)) {
             return MoneyConnector::RETURN_SUCCESS;
         } else {
             return MoneyConnector::RETURN_FAILED;
@@ -86,9 +86,9 @@ class MoneySystem implements MoneyConnector
     /**
      * @inheritDoc
      */
-    public function addMoney(Player $player, float $amount): int
+    public function addMoney(Player $player, int $amount): int
     {
-        if ($this->parentAPI->increase($player, (int)$amount)) {
+        if ($this->parentAPI->increase($player, $amount)) {
             return MoneyConnector::RETURN_SUCCESS;
         } else {
             return MoneyConnector::RETURN_FAILED;
@@ -98,9 +98,9 @@ class MoneySystem implements MoneyConnector
     /**
      * @inheritDoc
      */
-    public function reduceMoney(Player $player, float $amount): int
+    public function reduceMoney(Player $player, int $amount): int
     {
-        if ($this->parentAPI->reduce($player, (int)$amount)) {
+        if ($this->parentAPI->reduce($player, $amount)) {
             return MoneyConnector::RETURN_SUCCESS;
         } else {
             return MoneyConnector::RETURN_FAILED;

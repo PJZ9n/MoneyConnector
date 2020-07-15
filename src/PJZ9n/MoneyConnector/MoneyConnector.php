@@ -71,39 +71,39 @@ interface MoneyConnector
     /**
      * Get player money
      *
-     * @return float|null
+     * @return int|null
      */
-    public function myMoney(Player $player): ?float;
+    public function myMoney(Player $player): ?int;
     
     /**
      * Set player money
      *
      * @param Player $player
-     * @param float $amount
+     * @param int $amount
      *
      * @return int
      */
-    public function setMoney(Player $player, float $amount): int;
+    public function setMoney(Player $player, int $amount): int;
     
     /**
      * Add player money
      *
      * @param Player $player
-     * @param float $amount
+     * @param int $amount
      *
      * @return int
      */
-    public function addMoney(Player $player, float $amount): int;
+    public function addMoney(Player $player, int $amount): int;
     
     /**
      * Reduce player money
      *
      * @param Player $player
-     * @param float $amount
+     * @param int $amount
      *
      * @return int
      */
-    public function reduceMoney(Player $player, float $amount): int;
+    public function reduceMoney(Player $player, int $amount): int;
     
     /**
      * Get an instance of the parent economy API.
