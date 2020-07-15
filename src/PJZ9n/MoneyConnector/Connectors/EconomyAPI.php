@@ -51,15 +51,15 @@ class EconomyAPI implements MoneyConnector
         }
         return MoneyConnector::RETURN_FAILED;
     }
-
+    
     /** @var PEconomyAPI */
     private $parentAPI;
-
+    
     public function __construct()
     {
         $this->parentAPI = PEconomyAPI::getInstance();
     }
-
+    
     /**
      * @inheritDoc
      */
@@ -67,7 +67,7 @@ class EconomyAPI implements MoneyConnector
     {
         return $this->parentAPI->getMonetaryUnit();
     }
-
+    
     /**
      * @inheritDoc
      */
@@ -75,39 +75,71 @@ class EconomyAPI implements MoneyConnector
     {
         return $this->parentAPI->getAllMoney();
     }
-
+    
     /**
      * @inheritDoc
      */
     public function myMoney(Player $player): ?int
     {
+        return $this->myMoneyByName($player->getName());
+    }
+    
+    /**
+     * @inheritDoc
+     */
+    public function myMoneyByName(string $player): ?int
+    {
         return (int)floor($this->parentAPI->myMoney($player));
     }
-
+    
     /**
      * @inheritDoc
      */
     public function setMoney(Player $player, int $amount): int
     {
+        return $this->setMoneyByName($player->getName(), $amount);
+    }
+    
+    /**
+     * @inheritDoc
+     */
+    public function setMoneyByName(string $player, int $amount): int
+    {
         return self::convertResult($this->parentAPI->setMoney($player, $amount));
     }
-
+    
     /**
      * @inheritDoc
      */
     public function addMoney(Player $player, int $amount): int
     {
+        return $this->addMoneyByName($player->getName(), $amount);
+    }
+    
+    /**
+     * @inheritDoc
+     */
+    public function addMoneyByName(string $player, int $amount): int
+    {
         return self::convertResult($this->parentAPI->addMoney($player, $amount));
     }
-
+    
     /**
      * @inheritDoc
      */
     public function reduceMoney(Player $player, int $amount): int
     {
+        return $this->reduceMoneyByName($player->getName(), $amount);
+    }
+    
+    /**
+     * @inheritDoc
+     */
+    public function reduceMoneyByName(string $player, int $amount): int
+    {
         return self::convertResult($this->parentAPI->reduceMoney($player, $amount));
     }
-
+    
     /**
      * @inheritDoc
      *

@@ -64,6 +64,14 @@ class MoneySystem implements MoneyConnector
      */
     public function myMoney(Player $player): ?int
     {
+        return $this->myMoneyByName($player->getName());
+    }
+    
+    /**
+     * @inheritDoc
+     */
+    public function myMoneyByName(string $player): ?int
+    {
         $get = $this->parentAPI->get($player);
         if ($get === null) {
             return null;
@@ -75,6 +83,14 @@ class MoneySystem implements MoneyConnector
      * @inheritDoc
      */
     public function setMoney(Player $player, int $amount): int
+    {
+        return $this->setMoneyByName($player->getName(), $amount);
+    }
+    
+    /**
+     * @inheritDoc
+     */
+    public function setMoneyByName(string $player, int $amount): int
     {
         if ($this->parentAPI->set($player, $amount)) {
             return MoneyConnector::RETURN_SUCCESS;
@@ -88,6 +104,14 @@ class MoneySystem implements MoneyConnector
      */
     public function addMoney(Player $player, int $amount): int
     {
+        return $this->addMoneyByName($player->getName(), $amount);
+    }
+    
+    /**
+     * @inheritDoc
+     */
+    public function addMoneyByName(string $player, int $amount): int
+    {
         if ($this->parentAPI->increase($player, $amount)) {
             return MoneyConnector::RETURN_SUCCESS;
         } else {
@@ -99,6 +123,14 @@ class MoneySystem implements MoneyConnector
      * @inheritDoc
      */
     public function reduceMoney(Player $player, int $amount): int
+    {
+        return $this->reduceMoneyByName($player->getName(), $amount);
+    }
+    
+    /**
+     * @inheritDoc
+     */
+    public function reduceMoneyByName(string $player, int $amount): int
     {
         if ($this->parentAPI->reduce($player, $amount)) {
             return MoneyConnector::RETURN_SUCCESS;

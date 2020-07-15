@@ -67,6 +67,14 @@ class MixCoinSystem implements MoneyConnector
      */
     public function myMoney(Player $player): ?int
     {
+        return $this->myMoneyByName($player->getName());
+    }
+    
+    /**
+     * @inheritDoc
+     */
+    public function myMoneyByName(string $player): ?int
+    {
         return $this->parentAPI->GetCoin($player);
     }
     
@@ -74,6 +82,14 @@ class MixCoinSystem implements MoneyConnector
      * @inheritDoc
      */
     public function setMoney(Player $player, int $amount): int
+    {
+        return $this->setMoneyByName($player->getName(), $amount);
+    }
+    
+    /**
+     * @inheritDoc
+     */
+    public function setMoneyByName(string $player, int $amount): int
     {
         $this->parentAPI->SetCoin($player, $amount);
         return MoneyConnector::RETURN_SUCCESS;
@@ -84,6 +100,14 @@ class MixCoinSystem implements MoneyConnector
      */
     public function addMoney(Player $player, int $amount): int
     {
+        return $this->addMoneyByName($player->getName(), $amount);
+    }
+    
+    /**
+     * @inheritDoc
+     */
+    public function addMoneyByName(string $player, int $amount): int
+    {
         $this->parentAPI->PlusCoin($player, $amount);
         return MoneyConnector::RETURN_SUCCESS;
     }
@@ -92,6 +116,14 @@ class MixCoinSystem implements MoneyConnector
      * @inheritDoc
      */
     public function reduceMoney(Player $player, int $amount): int
+    {
+        return $this->reduceMoneyByName($player->getName(), $amount);
+    }
+    
+    /**
+     * @inheritDoc
+     */
+    public function reduceMoneyByName(string $player, int $amount): int
     {
         $this->parentAPI->MinusCoin($player, $amount);
         return MoneyConnector::RETURN_SUCCESS;

@@ -76,6 +76,14 @@ interface MoneyConnector
     public function myMoney(Player $player): ?int;
     
     /**
+     * Get player money
+     * By Name
+     *
+     * @return int|null
+     */
+    public function myMoneyByName(string $player): ?int;
+    
+    /**
      * Set player money
      *
      * @param Player $player
@@ -84,6 +92,17 @@ interface MoneyConnector
      * @return int
      */
     public function setMoney(Player $player, int $amount): int;
+    
+    /**
+     * Set player money
+     * By Name
+     *
+     * @param string $player
+     * @param int $amount
+     *
+     * @return int
+     */
+    public function setMoneyByName(string $player, int $amount): int;
     
     /**
      * Add player money
@@ -96,6 +115,17 @@ interface MoneyConnector
     public function addMoney(Player $player, int $amount): int;
     
     /**
+     * Add player money
+     * By Name
+     *
+     * @param string $player
+     * @param int $amount
+     *
+     * @return int
+     */
+    public function addMoneyByName(string $player, int $amount): int;
+    
+    /**
      * Reduce player money
      *
      * @param Player $player
@@ -104,6 +134,17 @@ interface MoneyConnector
      * @return int
      */
     public function reduceMoney(Player $player, int $amount): int;
+    
+    /**
+     * Reduce player money
+     * By Name
+     *
+     * @param string $player
+     * @param int $amount
+     *
+     * @return int
+     */
+    public function reduceMoneyByName(string $player, int $amount): int;
     
     /**
      * Get an instance of the parent economy API.
