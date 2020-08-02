@@ -23,6 +23,9 @@ declare(strict_types=1);
 
 namespace PJZ9n\MoneyConnector;
 
+use metowa1227\moneysystem\api\core\API;
+use MixCoinSystem\MixCoinSystem as PMixCoinSystem;
+use onebone\economyapi\EconomyAPI as PEconomyAPI;
 use PJZ9n\MoneyConnector\Connectors\EconomyAPI;
 use PJZ9n\MoneyConnector\Connectors\MixCoinSystem;
 use PJZ9n\MoneyConnector\Connectors\MoneySystem;
@@ -51,5 +54,34 @@ abstract class MoneyConnectorUtils
                 break;
         }
         return null;
+    }
+    
+    /**
+     * Returns the corresponding connector from the detected API. Returns null if not found.
+     *
+     * @return MoneyConnector|null
+     */
+    public static function getConnectorByDetect(): ?MoneyConnector
+    {
+        if (class_exists(PEconomyAPI::class)) {
+            return new EconomyAPI();
+        }
+        if (class_exists(PMixCoinSystem::class)) {
+            return new MixCoinSystem();
+        }
+        if (class_exists(API::class)) {
+            return new MoneySystem();
+        }
+        return null;
+    }
+    
+    /**
+     * Returns the result of whether the API supported by MoneyConnector exists.
+     *
+     * @return bool
+     */
+    public static function isExistsSupportedAPI(): bool
+    {
+        return self::getConnectorByDetect() instanceof MoneyConnector;
     }
 }
