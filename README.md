@@ -22,6 +22,103 @@ Please refer to
 for basic usage of Virion.
 
 ### Example
+
+#### Use auto detect (Very Simple)
+
+```php
+<?php
+
+/**
+ * @name Example
+ * @version 1.0.0
+ * @main Example\Example\Main
+ * @api 3.0.0
+ * @description Every time you login to the server, player will be granted 1000 money.
+ */
+
+declare(strict_types=1);
+
+namespace Example\Example;
+
+use PJZ9n\MoneyConnector\MoneyConnectorUtils;
+use pocketmine\event\Listener;
+use pocketmine\event\player\PlayerJoinEvent;
+use pocketmine\plugin\PluginBase;
+use RuntimeException;
+
+class Main extends PluginBase implements Listener
+{
+    public function onEnable(): void
+    {
+        if (!MoneyConnectorUtils::isExistsSupportedAPI()) {        
+            throw new RuntimeException("API is not supported");
+        }
+        $name = MoneyConnectorUtils::getConnectorByDetect()->getName();
+        $this->getLogger()->info("Using API: " . $name);
+        $this->getServer()->getPluginManager()->registerEvents($this, $this);
+    }
+    
+    public function onPlayerJoin(PlayerJoinEvent $event): void
+    {
+        $player = $event->getPlayer();
+        MoneyConnectorUtils::getConnectorByDetect()->addMoney($player, 1000);
+    }
+}
+```
+
+#### Not use auto detect
+
+```php
+<?php
+
+/**
+ * @name Example
+ * @version 1.0.0
+ * @main Example\Example\Main
+ * @api 3.0.0
+ * @description Every time you login to the server, player will be granted 1000 money.
+ */
+
+declare(strict_types=1);
+
+namespace Example\Example;
+
+use PJZ9n\MoneyConnector\MoneyConnectorUtils;
+use pocketmine\event\Listener;
+use pocketmine\event\player\PlayerJoinEvent;
+use pocketmine\plugin\PluginBase;
+use PJZ9n\MoneyConnector\MoneyConnector;
+use pocketmine\utils\Config;
+use RuntimeException;
+
+class Main extends PluginBase implements Listener
+{
+    /** @var MoneyConnector */
+    private $moneyConnector;
+    
+    public function onEnable(): void
+    {
+        $settings = new Config($this->getDataFolder() . "settings.yml", Config::YAML, [
+            "moneyapi" => "EconomyAPI",
+        ]);
+        $moneyAPI = $settings->get("moneyapi");
+        $this->moneyConnector = MoneyConnectorUtils::getConnectorByName((string)$moneyAPI);
+        if (!($this->moneyConnector instanceof MoneyConnector)) {        
+            throw new RuntimeException("API \"{$moneyAPI}\" is not supported");
+        }
+        $this->getServer()->getPluginManager()->registerEvents($this, $this);
+    }
+    
+    public function onPlayerJoin(PlayerJoinEvent $event): void
+    {
+        $player = $event->getPlayer();
+        $this->moneyConnector->addMoney($player, 1000);
+    }
+}
+```
+
+#### Basic
+
 ```php
 <?php
 
