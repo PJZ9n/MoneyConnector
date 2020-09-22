@@ -148,4 +148,12 @@ class MoneySystem implements MoneyConnector
     {
         return $this->parentAPI;
     }
+    
+    /**
+     * @inheritDoc
+     */
+    public function getName(): string
+    {
+        return "MoneySystem";
+    }
 }

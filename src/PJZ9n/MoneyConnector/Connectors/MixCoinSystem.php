@@ -138,4 +138,12 @@ class MixCoinSystem implements MoneyConnector
     {
         return $this->parentAPI;
     }
+    
+    /**
+     * @inheritDoc
+     */
+    public function getName(): string
+    {
+        return "MixCoinSystem";
+    }
 }

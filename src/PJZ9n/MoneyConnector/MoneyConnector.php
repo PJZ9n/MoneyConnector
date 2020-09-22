@@ -154,4 +154,11 @@ interface MoneyConnector
      * @return Object
      */
     public function getParentAPIInstance(): Object;
+    
+    /**
+     * Get connector name
+     *
+     * @return string
+     */
+    public function getName(): string;
 }
