@@ -49,7 +49,7 @@ class MixCoinSystem implements MoneyConnector
      */
     public function getMonetaryUnit(): string
     {
-        return "";//Not supported
+        return "Coin";//HACK
     }
     
     /**
