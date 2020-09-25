@@ -57,9 +57,14 @@ class MixCoinSystem implements MoneyConnector
      */
     public function getAllMoney(): array
     {
-        /** @var Config $coin */
-        $coin = $this->parentAPI->Coin;
-        return $coin->getAll();
+        /** @var Config $coinConfig */
+        $coinConfig = $this->parentAPI->Coin;
+        //to integer
+        $allMoney = [];
+        foreach ($coinConfig->getAll() as $name => $coin) {
+            $allMoney[$name] = (int)$coin;
+        }
+        return $allMoney;
     }
     
     /**
@@ -75,7 +80,7 @@ class MixCoinSystem implements MoneyConnector
      */
     public function myMoneyByName(string $player): ?int
     {
-        return $this->parentAPI->GetCoin($player);
+        return (int)$this->parentAPI->GetCoin($player);
     }
     
     /**
